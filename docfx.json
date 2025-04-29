@@ -1,0 +1,50 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/images/**"
+        ]
+      }
+    ],
+    "overwrite": [
+      {
+        "files": [
+          "**/*.overwrite.md"
+        ]
+      }
+    ],
+    "dest": "_site",
+    "globalMetadata": {
+      "_appTitle": "Bangla Documentation"
+    },
+    "template": [
+      "default"
+    ]
+  },
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "**/*.csproj"
+          ],
+          "exclude": [
+            "**/bin/**",
+            "**/obj/**"
+          ]
+        }
+      ],
+      "dest": "api",
+      "filter": "filterConfig.yml"
+    }
+  ]
+}
