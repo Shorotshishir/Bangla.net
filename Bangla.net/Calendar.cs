@@ -8,9 +8,7 @@
 
         private static int GetBengaliYear(int day, int month, int year)
         {
-            if (month > 3)
-                return year - 593;
-            if (month == 3 && day > 13)
+            if (month > 3 || month == 3 && day > 13)
                 return year - 593;
 
             return year - 594;
@@ -49,10 +47,8 @@
             {
                 return (daysInMonth + gregorianDay - lastDay, month);
             }
-            else
-            {
-                return (gregorianDay - lastDay, (month + 1) % 12);
-            }
+
+            return (gregorianDay - lastDay, (month + 1) % 12);
         }
 
         /// <summary>
@@ -80,7 +76,29 @@
         /// <returns>Bengali date information</returns>
         public static BengaliDateInfo GetBengaliDate(int day, int month, int year)
         {
-            return GetBengaliDate(new DateTime(year, month, day));
+            if (year < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(year), "Year must be greater than 0");
+            }
+            if (month is < 1 or > 12)
+            {
+                throw new ArgumentOutOfRangeException(nameof(month), "Month must be between 1 and 12");
+            }
+            if (day is < 1 or > 32)
+            {
+                throw new ArgumentOutOfRangeException(nameof(day), "Day must be greater than 0");
+            }
+
+            DateTime date;
+            try
+            {
+                date = new DateTime(year, month, day);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                throw new ArgumentException($"Invalid date combination: {day}/{month}/{year}. {ex.Message}", ex);
+            }
+            return GetBengaliDate(date);
         }
     }
 }

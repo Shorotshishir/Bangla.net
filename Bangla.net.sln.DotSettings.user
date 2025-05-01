@@ -1,0 +1,16 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5cd593cc_002Daac3_002D4de3_002D8273_002De4f4e5db5243/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ToBanglaWord_String_ReturnsCorrectWord" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::4D924D9E-9826-CD65-D25B-EEABAADEF8F4::net8.0::NumberTests.ToBanglaWord_String_ReturnsCorrectWord&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6bc1889d_002Da31f_002D4c9c_002Dac1f_002D2b9ebcc50e5d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ToBanglaWord_String_ReturnsCorrectWord #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::4D924D9E-9826-CD65-D25B-EEABAADEF8F4::net8.0::NumberTests.ToBanglaWord_String_ReturnsCorrectWord&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::4D924D9E-9826-CD65-D25B-EEABAADEF8F4::net8.0::NumberTests.ToBanglaWord_Double_ReturnsCorrectWord&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::4D924D9E-9826-CD65-D25B-EEABAADEF8F4::net8.0::NumberTests.ToBanglaNumber_String_ReturnsCorrectNumerals&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::4D924D9E-9826-CD65-D25B-EEABAADEF8F4::net8.0::NumberTests.ToBanglaNumber_Double_ReturnsCorrectNumerals&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::4D924D9E-9826-CD65-D25B-EEABAADEF8F4::net8.0::NumberTests.ToBanglaWord_WithInvalidInput_ThrowsFormatException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::4D924D9E-9826-CD65-D25B-EEABAADEF8F4::net8.0::NumberTests.ToBanglaNumber_WithInvalidInput_ThrowsFormatException&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

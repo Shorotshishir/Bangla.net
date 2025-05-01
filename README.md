@@ -93,3 +93,9 @@ dotnet build -c Release
 ```powershell
 dotnet pack -c Release
 ```
+
+## Unit Testing
+
+This project uses `xunit` as a test case writing packages. All test cases are written inside `TestBangla.net` project.  
+It is already connected to the `Bangla.net` project. Write  you test cases there.  
+please refer to [this link](https://xunit.net/docs/getting-started/v3/cmdline#write-your-first-tests) for getting started with `xUnit`
