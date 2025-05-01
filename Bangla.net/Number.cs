@@ -21,11 +21,6 @@ namespace bng
         {
             return ToBanglaNumber(number.ToString("F0"));
         }
-
-        public static string ConvertToMillion(string numTextString)
-        {
-            return BengaliNumberConverter.ConvertToMillBill(numTextString);
-        }
     }
 }
 
