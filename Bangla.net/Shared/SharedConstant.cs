@@ -1,9 +1,12 @@
-namespace bng
+﻿namespace bng
 {
-    internal static class BengaliNumberConstants
+    internal static class SharedConstant
     {
+        internal static readonly string[] BengaliNum = { "০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯" };
+        internal static readonly string[] EnglishNum = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
         internal static readonly string[] BengaliDigits = {
-            "শূন্য", "এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়", "সাত", "আট", "নয়"
+            "শূন্য", "এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়", "সাত", "আট", "নয়"
         };
 
         internal static readonly string[] BengaliTeens = {
@@ -41,10 +44,5 @@ namespace bng
         internal static readonly string[] BengaliNineties = {
             "নব্বই", "একানব্বই", "বিরানব্বই", "তিরানব্বই", "চুরানব্বই", "পঁচানব্বই", "ছিয়ানব্বই", "সাতানব্বই", "আটানব্বই", "নিরানব্বই"
         };
-
-        internal static readonly string Hundred = "শত";
-        internal static readonly string Thousand = "হাজার";
-        internal static readonly string Lakh = "লক্ষ";
-        internal static readonly string Crore = "কোটি";
     }
 }

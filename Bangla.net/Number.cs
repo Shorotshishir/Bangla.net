@@ -5,21 +5,21 @@ namespace bng
     {
         public static string ToBanglaWord(string numberStr)
         {
-            return BengaliNumberConverter.ConvertToWords(numberStr);
+            return NumberConverter.ConvertToWords(numberStr);
         }
 
         public static string ToBanglaNumber(string numberString)
         {
-            return BengaliCalendarConverters.ConvertToBengaliNumerals(numberString);
+            return NumberConverter.ConvertToBanglaNumerics(numberString);
         }
 
         public static string ToBanglaWord(double number)
         {
-            return ToBanglaWord(number.ToString("F0"));
+            return ToBanglaWord(number.ToString());
         }
         public static string ToBanglaNumber(double number)
         {
-            return ToBanglaNumber(number.ToString("F0"));
+            return ToBanglaNumber(number.ToString());
         }
     }
 }

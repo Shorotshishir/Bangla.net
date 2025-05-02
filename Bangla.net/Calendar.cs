@@ -4,7 +4,7 @@
     {
         private static bool IsLeapYear(int year) => DateTime.IsLeapYear(year);
 
-        private static bool IsLeapYearMonth(int month, int year) => month == BengaliCalendarConstants.LeapYearMonthIndex && IsLeapYear(year);
+        private static bool IsLeapYearMonth(int month, int year) => month == CalendarConstants.LeapYearMonthIndex && IsLeapYear(year);
 
         private static int GetBengaliYear(int day, int month, int year)
         {
@@ -18,7 +18,7 @@
         {
             // Convert DayOfWeek (Sunday = 0) to Monday-based index
             int dayIndex = ((int)date.DayOfWeek + 6) % 7;
-            return BengaliCalendarConstants.BengaliWeekdays[dayIndex];
+            return CalendarConstants.BengaliWeekdays[dayIndex];
         }
 
 
@@ -29,19 +29,19 @@
 
             return new BengaliDateInfo
             {
-                Date = BengaliCalendarConverters.ConvertToBengaliNumerals(bengaliDay.ToString()),
-                Month = BengaliCalendarConstants.BengaliMonths[bengaliMonth],
-                Year = BengaliCalendarConverters.ConvertToBengaliNumerals(GetBengaliYear(day, month + 1, year).ToString()),
-                Season = BengaliCalendarConstants.BengaliSeasons[bengaliMonth / 2],
+                Date = CalendarConverters.ConvertToBengaliNumerals(bengaliDay.ToString()),
+                Month = CalendarConstants.BengaliMonths[bengaliMonth],
+                Year = CalendarConverters.ConvertToBengaliNumerals(GetBengaliYear(day, month + 1, year).ToString()),
+                Season = CalendarConstants.BengaliSeasons[bengaliMonth / 2],
                 Weekday = GetBengaliWeekday(gregorianDate),
-                Ordinal = BengaliCalendarConverters.ConvertToOrdinal(BengaliCalendarConverters.ConvertToBengaliNumerals(bengaliDay.ToString()))
+                Ordinal = CalendarConverters.ConvertToOrdinal(CalendarConverters.ConvertToBengaliNumerals(bengaliDay.ToString()))
             };
         }
 
         private static (int day, int month) CalculateBengaliDayMonth(int gregorianDay, int month, int year)
         {
-            var lastDay = BengaliCalendarConstants.GregLastDayOfBengaliMonths[month];
-            var daysInMonth = BengaliCalendarConstants.DaysInBengaliMonths[month] + (IsLeapYearMonth(month, year) ? 1 : 0);
+            var lastDay = CalendarConstants.GregLastDayOfBengaliMonths[month];
+            var daysInMonth = CalendarConstants.DaysInBengaliMonths[month] + (IsLeapYearMonth(month, year) ? 1 : 0);
 
             if (gregorianDay <= lastDay)
             {

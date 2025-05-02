@@ -1,6 +1,6 @@
 ﻿namespace bng
 {
-    internal class BengaliCalendarConverters
+    internal class CalendarConverters
     {
 
         /// <summary>
@@ -10,7 +10,7 @@
         /// <returns>Text with English numerals converted to Bengali numerals</returns>
         public static string ConvertToBengaliNumerals(string text)
         {
-            return ConvertDigits(text, BengaliCalendarConstants.EnglishDigits, BengaliCalendarConstants.BanglaDigits);
+            return ConvertDigits(text, SharedConstant.EnglishNum, SharedConstant.BengaliNum);
         }
 
         /// <summary>
@@ -20,7 +20,7 @@
         /// <returns>Text with Bengali numerals converted to English numerals</returns>
         public static string ConvertToEnglishNumerals(string text)
         {
-            return ConvertDigits(text, BengaliCalendarConstants.BanglaDigits, BengaliCalendarConstants.EnglishDigits);
+            return ConvertDigits(text, SharedConstant.BengaliNum, SharedConstant.EnglishNum);
         }
 
         /// <summary>
@@ -28,9 +28,6 @@
         /// </summary>
         private static string ConvertDigits(string text, string[] sourceDigits, string[] targetDigits)
         {
-            if (string.IsNullOrEmpty(text))
-                return text;
-
             var result = new System.Text.StringBuilder(text.Length);
 
             foreach (char c in text)
@@ -50,9 +47,9 @@
         public static string ConvertToOrdinal(string text)
         {
             if (int.TryParse(ConvertToEnglishNumerals(text), out var numericDay) &&
-                numericDay > 0 && numericDay <= BengaliCalendarConstants.BengaliOrdinals.Length)
+                numericDay > 0 && numericDay <= CalendarConstants.BengaliOrdinals.Length)
             {
-                return BengaliCalendarConstants.BengaliOrdinals[numericDay - 1];
+                return CalendarConstants.BengaliOrdinals[numericDay - 1];
             }
             return string.Empty;
         }

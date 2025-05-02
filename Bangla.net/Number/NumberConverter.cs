@@ -2,21 +2,49 @@ using System.Text;
 
 namespace bng
 {
-    internal static class BengaliNumberConverter
+    internal static class NumberConverter
     {   
         internal static string ConvertToWords(string numberStr)
          {
+            if (string.IsNullOrEmpty(numberStr))
+            {
+                throw new FormatException(nameof(numberStr));
+            }
+
+            if (numberStr.Count(c=> c == '.') > 1)
+            {
+                throw new FormatException(nameof(numberStr));
+            }
             // Handle negative numbers
             if (numberStr.StartsWith("-"))
                 return "ঋণাত্মক " + ConvertToWords(numberStr[1..]);
 
+            var splitOnDecimal = numberStr.Split('.');
+            numberStr = splitOnDecimal[0];
+            var decBuilder = new StringBuilder();
+            if (splitOnDecimal.Length > 1)
+            {
+                var dec = splitOnDecimal[1];
+                
+                decBuilder.Append(" দশমিক");
+                Console.WriteLine(dec);
+                for (int i = 0; i < dec.Length; i++)
+                {
+                    var index = dec[i] - 48;
+                    decBuilder.Append(" ");
+                    decBuilder.Append(SharedConstant.BengaliDigits[index]);
+                }
+            }
+
             // Clean the number string (remove commas and other non-numeric chars)
-            numberStr = new string(numberStr.Where(c => char.IsDigit(c)).ToArray());
+            // numberStr = new string(numberStr.Where(c => char.IsDigit(c)).ToArray());
 
             // Handle zero
-            if (string.IsNullOrEmpty(numberStr) || numberStr == "0")
-                return BengaliNumberConstants.BengaliDigits[0];
+            if (numberStr == "0")
+                return SharedConstant.BengaliDigits[0];
 
+            
+            
             // Group the digits into 7-digit segments (crore-lakh-thousand-hundred pattern)
             var segments = new List<string>();
             int length = numberStr.Length;
@@ -50,7 +78,7 @@ namespace bng
                     // Add crore for all segments except the last one
                     if (i < segments.Count - 1)
                     {
-                        result.Append(segmentValue + " " + BengaliNumberConstants.Crore);
+                        result.Append(segmentValue + " " + NumberConstants.Crore);
                     }
                     else
                     {
@@ -58,7 +86,7 @@ namespace bng
                     }
                 }
             }
-
+            result.Append(decBuilder);
             return result.ToString();
         }
 
@@ -71,17 +99,11 @@ namespace bng
 
             StringBuilder result = new StringBuilder();
 
-            // Safety check for segment size
-            // if (value >= 10000000)
-            // {
-            //     return "Error: Segment too large";
-            // }
-
             // Handle crores
             if (value >= 10000000)
             {
                 long crores = value / 10000000;
-                result.Append(ConvertSmallNumber(crores) + " " + BengaliNumberConstants.Crore);
+                result.Append(ConvertSmallNumber(crores) + " " + NumberConstants.Crore);
                 value %= 10000000;
 
                 if (value > 0)
@@ -92,7 +114,7 @@ namespace bng
             if (value >= 100000)
             {
                 long lakhs = value / 100000;
-                result.Append(ConvertSmallNumber(lakhs) + " " + BengaliNumberConstants.Lakh);
+                result.Append(ConvertSmallNumber(lakhs) + " " + NumberConstants.Lakh);
                 value %= 100000;
 
                 if (value > 0)
@@ -103,7 +125,7 @@ namespace bng
             if (value >= 1000)
             {
                 long thousands = value / 1000;
-                result.Append(ConvertSmallNumber(thousands) + " " + BengaliNumberConstants.Thousand);
+                result.Append(ConvertSmallNumber(thousands) + " " + NumberConstants.Thousand);
                 value %= 1000;
 
                 if (value > 0)
@@ -114,7 +136,7 @@ namespace bng
             if (value >= 100)
             {
                 long hundreds = value / 100;
-                result.Append(BengaliNumberConstants.BengaliDigits[(int)hundreds] + " " + BengaliNumberConstants.Hundred);
+                result.Append(SharedConstant.BengaliDigits[(int)hundreds] + " " + NumberConstants.Hundred);
                 value %= 100;
 
                 if (value > 0)
@@ -133,25 +155,25 @@ namespace bng
         private static string ConvertSmallNumber(long number)
         {
             if (number < 10)
-                return BengaliNumberConstants.BengaliDigits[(int)number];
+                return SharedConstant.BengaliDigits[(int)number];
             else if (number < 20)
-                return BengaliNumberConstants.BengaliTeens[(int)number - 10];
+                return SharedConstant.BengaliTeens[(int)number - 10];
             else if (number < 30)
-                return BengaliNumberConstants.BengaliTwenties[(int)number - 20];
+                return SharedConstant.BengaliTwenties[(int)number - 20];
             else if (number < 40)
-                return BengaliNumberConstants.BengaliThirties[(int)number - 30];
+                return SharedConstant.BengaliThirties[(int)number - 30];
             else if (number < 50)
-                return BengaliNumberConstants.BengaliFourties[(int)number - 40];
+                return SharedConstant.BengaliFourties[(int)number - 40];
             else if (number < 60)
-                return BengaliNumberConstants.BengaliFifties[(int)number - 50];
+                return SharedConstant.BengaliFifties[(int)number - 50];
             else if (number < 70)
-                return BengaliNumberConstants.BengaliSixties[(int)number - 60];
+                return SharedConstant.BengaliSixties[(int)number - 60];
             else if (number < 80)
-                return BengaliNumberConstants.BengaliSeventies[(int)number - 70];
+                return SharedConstant.BengaliSeventies[(int)number - 70];
             else if (number < 90)
-                return BengaliNumberConstants.BengaliEighties[(int)number - 80];
+                return SharedConstant.BengaliEighties[(int)number - 80];
             else if (number < 100)
-                return BengaliNumberConstants.BengaliNineties[(int)number - 90];
+                return SharedConstant.BengaliNineties[(int)number - 90];
 
             return ""; // Should never reach here
         }
@@ -220,15 +242,52 @@ namespace bng
         private static decimal GetNumericValue(string bengaliWord)
         {
             // Match Bengali word to numeric value
-            if (Array.IndexOf(BengaliNumberConstants.BengaliDigits, bengaliWord) is var digitIndex and >= 0)
+            if (Array.IndexOf(SharedConstant.BengaliDigits, bengaliWord) is var digitIndex and >= 0)
                 return digitIndex;
-            if (Array.IndexOf(BengaliNumberConstants.BengaliTeens, bengaliWord) is var teenIndex and >= 0)
+            if (Array.IndexOf(SharedConstant.BengaliTeens, bengaliWord) is var teenIndex and >= 0)
                 return teenIndex + 10;
-            if (Array.IndexOf(BengaliNumberConstants.BengaliTwenties, bengaliWord) is var twentyIndex and >= 0)
+            if (Array.IndexOf(SharedConstant.BengaliTwenties, bengaliWord) is var twentyIndex and >= 0)
                 return twentyIndex + 20;
 
             return -1; // Invalid word
         }
 
+        internal static string ConvertToBanglaNumerics(string text)
+        {
+            return ToBanglaNum(text, SharedConstant.EnglishNum, SharedConstant.BengaliNum);
+        }
+
+        private static string ToBanglaNum(string text, string [] sourceDigits, string[] targetDigits)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                throw new FormatException(nameof(text));
+            }
+
+            if (text.Count(c => c == '.') > 1)
+            {
+                throw new FormatException(nameof(text));
+            }
+
+            var result = new StringBuilder(text.Length);
+
+            foreach (char c in text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    if (!char.IsDigit('.'))
+                        throw new FormatException(nameof(text));
+                }
+                string charStr = c.ToString();
+                int index = Array.IndexOf(sourceDigits, charStr);
+
+                if (index >= 0)
+                    result.Append(targetDigits[index]);
+                else
+                    result.Append(c);
+            }
+
+            return result.ToString();
+        }
     }
 }

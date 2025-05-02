@@ -1,11 +1,8 @@
 ﻿namespace bng
 {
-    internal static class BengaliCalendarConstants
+    internal static class CalendarConstants
     {
-
         internal const int LeapYearMonthIndex = 2; // Falgun
-        internal static readonly string[] BanglaDigits = { "০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯" };
-        internal static readonly string[] EnglishDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
         internal static readonly string[] BengaliMonths = {
             "পৌষ", "মাঘ", "ফাল্গুন", "চৈত্র", "বৈশাখ", "জ্যৈষ্ঠ",
