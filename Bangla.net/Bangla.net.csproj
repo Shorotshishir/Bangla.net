@@ -7,7 +7,20 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <RootNamespace>bng</RootNamespace>
     <Version>0.1.0</Version>
+
+    <PackageTags>bangla, calendar, number, converter</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Title>Bangla.net</Title>
+    <Copyright>copyright ©️ 2025</Copyright>
+    <PackageProjectUrl>https://github.com/Shorotshishir/Bangla.net</PackageProjectUrl>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+      <None Include="docs\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>    
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 </Project>
