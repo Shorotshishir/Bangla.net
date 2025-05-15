@@ -20,12 +20,31 @@ var banglaWord = Number.ToBanglaWord(10011111002548976);
 var banglaWord = Number.ToBanglaWord("10011111002548976");
 // output : এক শত কোটি এগারো লক্ষ এগারো হাজার এক শত কোটি পঁচিশ লক্ষ আটচল্লিশ হাজার নয় শত ছিয়াত্তর
 
+var banglaWord = Number.ToBanglaWord("1234.56");, 
+// output : "এক হাজার দুই শত চৌত্রিশ দশমিক পাঁচ ছয়"
+
+var banglaWord = Number.ToBanglaWord(1234.56);, 
+// output : "এক হাজার দুই শত চৌত্রিশ দশমিক পাঁচ ছয়"
+
 var banglaNum = Number.ToBanglaNumber(10011111002548976);
 // output : ১০০১১১১১০০২৫৪৮৯৭৬
 
 var banglaNum = Number.ToBanglaNumber("10011111002548976");
 // output : ১০০১১১১১০০২৫৪৮৯৭৬
 
+var banglaNum = Number.ToBanglaNumber(10011111002548976);
+// output : ১০০১১১১১০০২৫৪৮৯৭৬
+
+var banglaNum = Number.ToBanglaNumber("10011111002548976");
+// output : ১০০১১১১১০০২৫৪৮৯৭৬
+
+"1234.88", "১২৩৪.৮৮"
+
+var banglaNum = Number.ToBanglaNumber(10011111002548976);
+// output : ১০০১১১১১০০২৫৪৮৯৭৬
+
+var banglaNum = Number.ToBanglaNumber("10011111002548976");
+// output : ১০০১১১১১০০২৫৪৮৯৭৬
 ```
 
 ### Calendar

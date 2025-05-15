@@ -275,16 +275,26 @@ namespace bng
             {
                 if (!char.IsDigit(c))
                 {
-                    if (!char.IsDigit('.'))
+                    if (c == '.')
+                    {
+                        result.Append(c);
+                    }
+                    else
+                    {
                         throw new FormatException(nameof(text));
+                    }
                 }
-                string charStr = c.ToString();
-                int index = Array.IndexOf(sourceDigits, charStr);
-
-                if (index >= 0)
-                    result.Append(targetDigits[index]);
                 else
-                    result.Append(c);
+                {
+                    string charStr = c.ToString();
+                    int index = Array.IndexOf(sourceDigits, charStr);
+
+                    if (index >= 0)
+                        result.Append(targetDigits[index]);
+                    else
+                        result.Append(c);
+                }
+                
             }
 
             return result.ToString();

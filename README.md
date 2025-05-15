@@ -20,18 +20,37 @@ var banglaWord = Number.ToBanglaWord(10011111002548976);
 var banglaWord = Number.ToBanglaWord("10011111002548976");
 // output : এক শত কোটি এগারো লক্ষ এগারো হাজার এক শত কোটি পঁচিশ লক্ষ আটচল্লিশ হাজার নয় শত ছিয়াত্তর
 
+var banglaWord = Number.ToBanglaWord("1234.56");, 
+// output : "এক হাজার দুই শত চৌত্রিশ দশমিক পাঁচ ছয়"
+
+var banglaWord = Number.ToBanglaWord(1234.56);, 
+// output : "এক হাজার দুই শত চৌত্রিশ দশমিক পাঁচ ছয়"
+
 var banglaNum = Number.ToBanglaNumber(10011111002548976);
 // output : ১০০১১১১১০০২৫৪৮৯৭৬
 
 var banglaNum = Number.ToBanglaNumber("10011111002548976");
 // output : ১০০১১১১১০০২৫৪৮৯৭৬
 
+var banglaNum = Number.ToBanglaNumber(10011111002548976);
+// output : ১০০১১১১১০০২৫৪৮৯৭৬
+
+var banglaNum = Number.ToBanglaNumber("10011111002548976");
+// output : ১০০১১১১১০০২৫৪৮৯৭৬
+
+"1234.88", "১২৩৪.৮৮"
+
+var banglaNum = Number.ToBanglaNumber(10011111002548976);
+// output : ১০০১১১১১০০২৫৪৮৯৭৬
+
+var banglaNum = Number.ToBanglaNumber("10011111002548976");
+// output : ১০০১১১১১০০২৫৪৮৯৭৬
 ```
 
 ### Calendar
 
 Calendar is a static class which is part of the `bng` namespace.
-provides 1 main function with 2 more overrides. You can see the example to understand the usage. `ToString()` is overriden to provide a cleaner output. 
+provides 1 main function with 2 more overrides. You can see the example to understand the usage. `ToString()` is overriden to provide a cleaner output.
 
 ```cs
 using System;

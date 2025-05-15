@@ -29,6 +29,7 @@ namespace TestBangla.net
         [Theory]
         [InlineData("123", "১২৩")]
         [InlineData("1000", "১০০০")]
+        [InlineData("1234.88", "১২৩৪.৮৮")]
         [InlineData("0", "০")]
         public void ToBanglaNumber_String_ReturnsCorrectNumerals(string input, string expected)
         {
@@ -39,7 +40,7 @@ namespace TestBangla.net
         [Theory]
         [InlineData(123, "১২৩")]
         [InlineData(1000, "১০০০")]
-        //[InlineData(1234.88, "১২৩৪.৮৮")] // // Double parsing issue, need clear fix
+        [InlineData(1234.88, "১২৩৪.৮৮")]
         [InlineData(0, "০")]
         public void ToBanglaNumber_Double_ReturnsCorrectNumerals(double input, string expected)
         {
